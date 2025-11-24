@@ -8,6 +8,7 @@ export default function Home() {
       <div className="">
           <Hero></Hero>
           <WhyChoose></WhyChoose>
+          
           <div>
             
           </div>

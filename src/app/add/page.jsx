@@ -1,7 +1,19 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import{useAuthState} from 'react-firebase-hooks/auth'
+import { auth } from '@/app/firebase/config' 
+import { useRouter } from 'next/navigation'
 
 export default function Postpage() {
+  const [user] =useAuthState(auth)
+  const router =useRouter()
+  console.log({user})
+
+    useEffect(() => {
+    if (!user) {
+      router.push('/register')
+    }
+  }, [user, router])
 
   const [data, setData] = useState({
     title: "",

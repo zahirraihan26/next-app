@@ -2,7 +2,7 @@ import React from 'react';
 import getAllcourse from '../../../lib/gateallcourse';
 import Link from 'next/link';
 
-export default async function Page() {
+export default async function coursePage() {
     const courses = await getAllcourse();
     console.log(courses);
 
