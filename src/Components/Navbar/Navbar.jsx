@@ -1,0 +1,93 @@
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import { FaBook } from "react-icons/fa";
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <nav className="sticky top-0 z-50  shadow-md">
+      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
+        
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <FaBook className="text-2xl text-blue-600" />
+          <Link href="/" className="text-2xl font-bold text-blue-600">
+            EduPlatform
+          </Link>
+        </div>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex items-center space-x-6 text-lg font-medium">
+          <li><Link href="/">Home</Link></li>
+          <li><Link href="/courses">Courses</Link></li>
+          <li><Link href="/about">About</Link></li>
+          <li><Link href="/services">Services</Link></li>
+          <li><Link href="/contact">Contact</Link></li>
+        </ul>
+
+        {/* Auth Buttons */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link href="/login" className="px-4 py-2 border rounded-md ">
+            Login
+          </Link>
+          <Link href="/register" className="px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700">
+            Register
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          onClick={() => setOpen(!open)} 
+          className="md:hidden text-3xl"
+        >
+          ☰
+        </button>
+      </div>
+
+      {/* Mobile Dropdown */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          open ? "max-h-[500px]" : "max-h-0"
+        }`}
+      >
+        <ul className="flex flex-col space-y-4 p-4 text-lg">
+          <li>
+            <Link href="/" onClick={() => setOpen(false)}>Home</Link>
+          </li>
+          <li>
+            <Link href="/about" onClick={() => setOpen(false)}>About Us</Link>
+          </li>
+          <li>
+            <Link href="/products" onClick={() => setOpen(false)}>Products</Link>
+          </li>
+          <li>
+            <Link href="/services" onClick={() => setOpen(false)}>Services</Link>
+          </li>
+          <li>
+            <Link href="/contact" onClick={() => setOpen(false)}>Contact</Link>
+          </li>
+
+          <hr className="my-2" />
+
+          <Link
+            href="/login"
+            className="px-4 py-2 border rounded-md"
+            onClick={() => setOpen(false)}
+          >
+            Login
+          </Link>
+
+          <Link
+            href="/register"
+            className="px-4 py-2 bg-blue-600 rounded-md"
+            onClick={() => setOpen(false)}
+          >
+            Register
+          </Link>
+        </ul>
+      </div>
+    </nav>
+  );
+}
