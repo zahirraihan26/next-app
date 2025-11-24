@@ -16,10 +16,10 @@ export default async function Page() {
                 {courses?.map((course) => (
                     <div
                         key={course._id}
-                        className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                        className=" rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
                     >
                         <img
-                            src={course.posterUrl || '/mnt/data/dd11aff2-727c-4bd4-b17d-ebce494e7af7.png'}
+                            src={course.image || '/mnt/data/dd11aff2-727c-4bd4-b17d-ebce494e7af7.png'}
                             alt={course.title}
                             className="w-full h-48 object-cover"
                         />
@@ -28,7 +28,7 @@ export default async function Page() {
                                 {course.genre || 'Development'}
                             </span>
                             <h3 className="text-lg font-semibold mb-1">{course.title}</h3>
-                            <p className="text-gray-500 text-sm mb-2">{course.description || 'Course description here'}</p>
+                            <p className="text-gray-500 text-sm mb-2">{course.shortDesc || 'Course description here'}</p>
                             <p className="text-xl font-bold text-green-500">${course.price || '50000'}</p>
                             <Link
                                 href={`/courses/${course._id}`}

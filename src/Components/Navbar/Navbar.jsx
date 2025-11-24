@@ -24,7 +24,7 @@ export default function Navbar() {
           <li><Link href="/courses">Courses</Link></li>
           <li><Link href="/about">About</Link></li>
           <li><Link href="/services">Services</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
+          <li><Link href="/add">Add</Link></li>
         </ul>
 
         {/* Auth Buttons */}
