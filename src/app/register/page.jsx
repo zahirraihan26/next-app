@@ -1,8 +1,9 @@
 'use client'
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from '@/app/firebase/config';
+import { auth , provider } from '@/app/firebase/config';
 import { useRouter } from 'next/navigation'; // ✅ Import useRouter
+import { signInWithPopup } from "firebase/auth"
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +22,17 @@ const SignUp = () => {
       console.error(e);
     }
   };
+
+  const handleGoogleSignIn = async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        console.log(result);
+        sessionStorage.setItem('user', true)
+        router.push('/')
+      } catch (error) {
+        console.error(error);
+      }
+     }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
@@ -45,6 +57,12 @@ const SignUp = () => {
           className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500"
         >
           Sign Up
+        </button>
+        <button 
+          onClick={handleGoogleSignIn}
+          className="w-full p-3 mt-5 bg-indigo-600 rounded text-white hover:bg-indigo-500"
+        >
+          Sign in with Google
         </button>
       </div>
     </div>

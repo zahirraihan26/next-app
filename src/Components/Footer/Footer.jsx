@@ -9,7 +9,7 @@ export default function Footer() {
         
         {/* Logo / About */}
         <div>
-          <h2 className="text-2xl font-bold text-white">MyWebsite</h2>
+          <h2 className="text-2xl font-bold text-white">EduPlatform</h2>
           <p className="mt-3 text-sm">
             A simple and responsive footer built with Next.js & TailwindCSS.
           </p>

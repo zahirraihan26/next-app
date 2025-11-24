@@ -1,4 +1,5 @@
 import Hero from "@/Components/Hero/Hero";
+import PopularCourses from "@/Components/PopularCourses/PopularCourses";
 import WhyChoose from "@/Components/WhyChoose/WhyChoose";
 
 
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="">
           <Hero></Hero>
           <WhyChoose></WhyChoose>
+          <PopularCourses></PopularCourses>
           
           <div>
             

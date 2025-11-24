@@ -38,9 +38,11 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center space-x-6 text-lg font-medium">
           <li><Link href="/">Home</Link></li>
           <li><Link href="/courses">Courses</Link></li>
+           <li><Link href="/add">Add Courses</Link></li>
+          <li><Link href="/manage">Manage Courses </Link></li>
           <li><Link href="/about">About</Link></li>
           <li><Link href="/services">Services</Link></li>
-          <li><Link href="/add">Add</Link></li>
+         
         </ul>
 
         {/* Auth Buttons */}

@@ -8,8 +8,9 @@ export default async function coursePage() {
 
     return (
         <div className="p-6">
-            <div className="flex items-center justify-center mb-8">
-                <h2 className="text-3xl font-bold">All Courses</h2>
+            <div className="flex flex-col items-center justify-center mb-8">
+                <h2 className="text-3xl font-bold">Explore Our Courses</h2>
+                <p className='taxt-xl font-semibold'>Discover the perfect course to advance your skills and career</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

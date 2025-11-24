@@ -45,49 +45,89 @@ export default function Postpage() {
   }
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <h2 className="text-xl font-bold mb-4">Add Courses</h2>
+    <div className="max-w-lg mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg mt-8">
+  <h2 className="text-2xl font-bold mb-6 text-teal-400 text-center">Add Course</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-3">
+  <form onSubmit={handleSubmit} className="space-y-4">
 
-        <input type="text" name="title" placeholder="Title"
-          className="border w-full p-2"
-          value={data.title} onChange={handleChange} required />
+    <input 
+      type="text" 
+      name="title" 
+      placeholder="Title"
+      className="w-full p-3 rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+      value={data.title} 
+      onChange={handleChange} 
+      required 
+    />
 
-        <input type="text" name="shortDesc" placeholder="Short Description"
-          className="border w-full p-2"
-          value={data.shortDesc} onChange={handleChange} required />
+    <input 
+      type="text" 
+      name="shortDesc" 
+      placeholder="Short Description"
+      className="w-full p-3 rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+      value={data.shortDesc} 
+      onChange={handleChange} 
+      required 
+    />
 
-        <textarea name="fullDesc" placeholder="Full Description"
-          className="border w-full p-2"
-          rows={3} value={data.fullDesc} onChange={handleChange} />
+    <textarea 
+      name="fullDesc" 
+      placeholder="Full Description"
+      className="w-full p-3 rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+      rows={4} 
+      value={data.fullDesc} 
+      onChange={handleChange} 
+    />
 
-        <input type="number" name="price" placeholder="Price"
-          className="border w-full p-2"
-          value={data.price} onChange={handleChange} />
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <input 
+        type="number" 
+        name="price" 
+        placeholder="Price"
+        className="w-full p-3 rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+        value={data.price} 
+        onChange={handleChange} 
+      />
 
-        <input type="date" name="date"
-          className="border w-full p-2"
-          value={data.date} onChange={handleChange} />
-
-        <select name="priority" className="bg-black border w-full p-2"
-          value={data.priority} onChange={handleChange}>
-          <option value="">Select priority</option>
-          <option value="low">Low</option>
-          <option value="normal">Normal</option>
-          <option value="high">High</option>
-        </select>
-
-        <input type="text" name="image" placeholder="Image URL"
-          className="border w-full p-2"
-          value={data.image} onChange={handleChange} />
-
-        <button type="submit"
-          className="bg-blue-600 text-white p-2 rounded">
-          Submit
-        </button>
-      </form>
+      <input 
+        type="date" 
+        name="date"
+        className="w-full p-3 rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+        value={data.date} 
+        onChange={handleChange} 
+      />
     </div>
+
+    <select 
+      name="priority" 
+      className="w-full p-3 rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+      value={data.priority} 
+      onChange={handleChange}
+    >
+      <option value="">Select Priority</option>
+      <option value="low">Low</option>
+      <option value="normal">Normal</option>
+      <option value="high">High</option>
+    </select>
+
+    <input 
+      type="text" 
+      name="image" 
+      placeholder="Image URL"
+      className="w-full p-3 rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+      value={data.image} 
+      onChange={handleChange} 
+    />
+
+    <button 
+      type="submit"
+      className="w-full bg-teal-500 hover:bg-teal-600 transition text-white font-semibold p-3 rounded-md shadow-md"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
   )
 }
 
