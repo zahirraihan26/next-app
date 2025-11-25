@@ -38,7 +38,7 @@ The app uses server components for routing and dynamic page generation, offering
 
 The application is deployed and can be accessed online:
 
-**Live URL:** [https://your-app.vercel.app]([https://your-app.vercel.app](https://next-app-yegj.vercel.app/))
+**Live URL:** [https://your-app.vercel.app]([https://next-app-yegj.vercel.app/])
 
 ---
 
