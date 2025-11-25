@@ -1,9 +1,15 @@
 import React from 'react';
-import getAllcourse from '../../../lib/gateallcourse';
+// import getAllcourse from '../../../lib/gateallcourse';
 import Link from 'next/link';
+// import Image from 'next/image';
 
 export default async function coursePage() {
-    const courses = await getAllcourse();
+
+    const res = await fetch('https://my-fast-next-server.vercel.app/courses', {
+        cache: 'no-store',
+    });
+
+    const courses = await res.json();
     console.log(courses);
 
     return (
@@ -24,6 +30,14 @@ export default async function coursePage() {
                             alt={course.title}
                             className="w-full h-48 object-cover"
                         />
+                        {/* <Image
+                         src={course.image || '/mnt/data/dd11aff2-727c-4bd4-b17d-ebce494e7af7.png'}
+                            alt={course.title}
+                            height={500}
+                            width={300}
+                            className="w-full h-48 object-cover">
+
+                        </Image> */}
                         <div className="p-4">
                             <span className="inline-block bg-blue-400 text-white text-xs px-2 py-1 rounded-full mb-2">
                                 {course.genre || 'Development'}
