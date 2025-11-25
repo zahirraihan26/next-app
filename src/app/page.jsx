@@ -1,6 +1,7 @@
 import Hero from "@/Components/Hero/Hero";
 import PopularCourses from "@/Components/PopularCourses/PopularCourses";
 import WhyChoose from "@/Components/WhyChoose/WhyChoose";
+import Ourstudent from "@/Components/Ourstudent/Ourstudent"
 
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
           <Hero></Hero>
           <WhyChoose></WhyChoose>
           <PopularCourses></PopularCourses>
+          <Ourstudent></Ourstudent>
           
           <div>
             

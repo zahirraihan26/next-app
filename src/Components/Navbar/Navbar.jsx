@@ -69,10 +69,12 @@ export default function Navbar() {
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${open ? "max-h-[500px]" : "max-h-0"}`}>
         <ul className="flex flex-col space-y-4 p-4 text-lg">
           <li><Link href="/" onClick={() => setOpen(false)}>Home</Link></li>
-          <li><Link href="/about" onClick={() => setOpen(false)}>About Us</Link></li>
-          <li><Link href="/products" onClick={() => setOpen(false)}>Products</Link></li>
+          <li><Link href="/courses" onClick={() => setOpen(false)}>Courses</Link></li>
+          <li><Link href="/add" onClick={() => setOpen(false)}>Add Courses</Link></li>
+          <li><Link  href="/manage" onClick={() => setOpen(false)}>Manage Courses</Link></li>
+          <li><Link href="/about" onClick={() => setOpen(false)}>About</Link></li>
           <li><Link href="/services" onClick={() => setOpen(false)}>Services</Link></li>
-          <li><Link href="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
+          
 
           <hr className="my-2" />
 
