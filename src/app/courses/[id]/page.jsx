@@ -4,23 +4,23 @@ export default async function DetailPage({ params }) {
     // unwrap the params promise
     const { id } = await params;
 
-    const res = await fetch(`http://localhost:5000/courses/${id}`, {
+    const res = await fetch(`https://my-fast-next-server.vercel.app/courses/${id}`, {
         cache: 'no-store',
     });
 
     const course = await res.json();
 
 
-    const category = course.title|| "Development";
-    const duration = course.priority|| "8 weeks";
+    const category = course.title || "Development";
+    const duration = course.priority || "8 weeks";
     const students = course.students || "1,234 students";
     const instructor = course.shortDesc || "Instructor Name";
 
     return (
-         <div className="min-h-screen bg-gray-500">
+        <div className="min-h-screen bg-gray-500">
             {/* Banner */}
-           <div className="h-64 bg-cover bg-center relative" style={{ backgroundImage: `url(${course.image || '/placeholder-banner.jpg'})` }}>
-                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-purple-500/50"></div>
+            <div className="h-64 bg-cover bg-center relative" style={{ backgroundImage: `url(${course.image || '/placeholder-banner.jpg'})` }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-purple-500/50"></div>
             </div>
 
             <div className="max-w-7xl  p-6 sticky top-6 mx-auto px-4 sm:px-6 lg:px-8 -mt-48">
@@ -57,7 +57,7 @@ export default async function DetailPage({ params }) {
                             </p>
                         </div>
 
-                        
+
                     </div>
 
                     {/* Sidebar */}

@@ -20,7 +20,7 @@ export default function ManageCoursesPage() {
   // Fetch courses on Client
   useEffect(() => {
     async function loadCourses() {
-      const res = await fetch('http://localhost:5000/courses');
+      const res = await fetch('https://my-fast-next-server.vercel.app/courses');
       const data = await res.json();
       setCourses(data);
     }
@@ -28,31 +28,31 @@ export default function ManageCoursesPage() {
   }, []);
 
   const handleDelete = async (id) => {
-  const confirmDelete = confirm("Are you sure you want to delete this course?");
-  if (!confirmDelete) return;
+    const confirmDelete = confirm("Are you sure you want to delete this course?");
+    if (!confirmDelete) return;
 
-  try {
-    const res = await fetch(`http://localhost:5000/courses/${id}`, {
-      method: 'DELETE',
-    });
+    try {
+      const res = await fetch(`https://my-fast-next-server.vercel.app/courses/${id}`, {
+        method: 'DELETE',
+      });
 
-    if (!res.ok) {
-      throw new Error('Failed to delete the course');
+      if (!res.ok) {
+        throw new Error('Failed to delete the course');
+      }
+
+      // Remove deleted course from state
+      setCourses(courses.filter(course => course._id !== id));
+      alert("Course deleted successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Error deleting course");
     }
-
-    // Remove deleted course from state
-    setCourses(courses.filter(course => course._id !== id));
-    alert("Course deleted successfully!");
-  } catch (error) {
-    console.error(error);
-    alert("Error deleting course");
-  }
-};
+  };
 
 
   return (
     <div className="p-4 sm:p-8 min-h-screen bg-gray-900 text-white">
-      
+
       <div className="flex flex-col sm:flex-row justify-between items-start mb-6 sm:mb-8">
         <div className="mb-4 sm:mb-0">
           <h1 className="text-2xl sm:text-4xl font-bold mb-1">Manage Courses</h1>
@@ -85,10 +85,10 @@ export default function ManageCoursesPage() {
                   <Link href={`/courses/${course._id}`} className="p-2 hover:text-teal-500 transition duration-150">
                     <FaEye />
                   </Link>
-                    <button onClick={() => handleDelete(course._id)} className="p-2 bg-red-500 rounded-md hover:bg-red-600 transition duration-150">
-                      <FaRegTrashAlt/>
-                    </button>
-                 
+                  <button onClick={() => handleDelete(course._id)} className="p-2 bg-red-500 rounded-md hover:bg-red-600 transition duration-150">
+                    <FaRegTrashAlt />
+                  </button>
+
                 </td>
               </tr>
             ))}

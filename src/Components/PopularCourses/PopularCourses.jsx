@@ -9,7 +9,7 @@ const PopularCourses = () => {
     // Fetch courses from backend
     const fetchCourses = async () => {
       try {
-        const res = await fetch("http://localhost:5000/courses");
+        const res = await fetch("https://my-fast-next-server.vercel.app/courses");
         const data = await res.json();
         setCourses(data.slice(0, 6)); // Only take the first 6 courses
       } catch (error) {
@@ -43,9 +43,9 @@ const PopularCourses = () => {
             <div className="h-48 bg-black flex items-center justify-center">
               <div
                 className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${course.image })` }}
+                style={{ backgroundImage: `url(${course.image})` }}
               >
-                
+
               </div>
             </div>
 
@@ -65,14 +65,14 @@ const PopularCourses = () => {
               </p>
               <Link href={`/courses/${course._id}`}>
                 <button className="mt-6 w-full py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-cyan-500 hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-gray-900 transition duration-150">
-                View Details
-              </button>
+                  View Details
+                </button>
               </Link>
             </div>
           </div>
         ))}
       </div>
-      
+
     </div>
   );
 };
