@@ -43,10 +43,11 @@ export default function ManageCoursesPage() {
       // Remove deleted course from state
       setCourses(courses.filter(course => course._id !== id)); 
       alert("Course deleted successfully!");
-      
+
     } catch (error) {
       console.error(error);
-      alert("Error deleting course");
+      alert("Error deleting courses");
+
     }
   };
 
