@@ -39,19 +39,19 @@ export default function Blog() {
                     Latest Articles & News
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
                     {blogs.map((blog) => (
                         <div
                             key={blog.id}
                             className="bg-white dark:bg-zinc-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 border border-zinc-200 dark:border-zinc-800 flex flex-col"
                         >
                             {/* Thumbnail Placeholder with Gradient */}
-                            {/* Image Thumbnail */}
-<img 
-    src={blog.image} 
-    alt={blog.title} 
-    className="h-48 w-full object-cover"
-/>
+                            <div
+                                className={`h-48 w-full bg-gradient-to-r ${blog.gradient}`}
+                            ></div>
+
                             <div className="p-6 flex-1 flex flex-col">
+                                
                                 <div className="flex justify-between items-center text-sm text-zinc-500 dark:text-zinc-400 mb-3">
                                     <span className="bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
                                         {blog.category}
