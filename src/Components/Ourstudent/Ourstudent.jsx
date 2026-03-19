@@ -1,80 +1,99 @@
 "use client";
 import React from 'react';
+import { motion } from "framer-motion";
 
 export default function TestimonialsPage() {
-  return (
-    <div className=" py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.2 }
+    }
+  };
 
-        {/* Title */}
-        <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4">
-          What Our Students Say
-        </h2>
-        <p className="text-center mb-14 text-lg">
-          Join thousands of satisfied learners who achieved their goals
-        </p>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const testimonials = [
+    {
+      text: "The AI learning paths transformed my career. The platform adapts to my pace, and the insights are always cutting-edge.",
+      initials: "SJ",
+      name: "Sarah Johnson",
+      role: "AI Engineer",
+      color: "from-violet-500 to-fuchsia-500"
+    },
+    {
+      text: "I've tried many platforms, but this one's AI tutor is stands out. The interactive experience is completely unmatched.",
+      initials: "MC",
+      name: "Michael Chen",
+      role: "Data Scientist",
+      color: "from-cyan-500 to-blue-500"
+    },
+    {
+      text: "The flexible, adaptive learning fits my schedule perfectly. I could reskill from UX to Prompt Engineering seamlessly.",
+      initials: "ER",
+      name: "Emily Rodriguez",
+      role: "AI Product Designer",
+      color: "from-emerald-500 to-teal-500"
+    }
+  ];
+
+  return (
+    <div className="relative py-24 px-4 bg-[#030014] overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+      <div className="relative max-w-7xl mx-auto z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-center mb-4 text-white">
+            What Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-cyan-400">Pioneers</span> Say
+          </h2>
+          <p className="text-center mb-16 text-lg text-gray-400 max-w-2xl mx-auto">
+            Join thousands of visionary learners who achieved their goals using our advanced platform.
+          </p>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {testimonials.map((t, idx) => (
+            <motion.div
+              key={idx}
+              variants={itemVariants}
+              className="group relative bg-[#0a0a0a]/60 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-violet-500/30 hover:shadow-[0_0_30px_rgba(139,92,246,0.1)] transition-all duration-300"
+            >
+              <div className="absolute top-0 right-10 w-20 h-1 bg-gradient-to-r from-transparent via-violet-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-          <div className="border rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <div className="flex text-cyan-500 mb-3 text-xl">
-              ⭐⭐⭐⭐⭐
-            </div>
-            <p className=" mb-6">
-              The courses here transformed my career. The instructors are top-notch
-              and the content is always up-to-date.
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="bg-cyan-500 text-white h-12 w-12 flex items-center justify-center rounded-full font-bold">
-                SJ
+              <div className="flex text-cyan-400 mb-6 text-sm tracking-widest">
+                ★★★★★
               </div>
-              <div>
-                <h4 className="font-semibold">Sarah Johnson</h4>
-                <p className="text-sm ">Software Developer</p>
-              </div>
-            </div>
-          </div>
+              <p className="mb-8 text-gray-300 leading-relaxed italic relative z-10">
+                "{t.text}"
+              </p>
 
-          <div className="border rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <div className="flex text-cyan-500 mb-3 text-xl">
-              ⭐⭐⭐⭐⭐
-            </div>
-            <p className="- mb-6">
-              Ive tried many platforms, but this one stands out.
-               The learning experience is unmatched .
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="bg-cyan-500 text-white h-12 w-12 flex items-center justify-center rounded-full font-bold">
-                MC
+              <div className="flex items-center gap-4 mt-auto">
+                <div className={`bg-gradient-to-br ${t.color} text-white h-12 w-12 flex items-center justify-center rounded-full font-bold shadow-lg`}>
+                  {t.initials}
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white group-hover:text-cyan-300 transition-colors">{t.name}</h4>
+                  <p className="text-sm text-violet-400">{t.role}</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold">Michael Chen</h4>
-                <p className="text-sm ">Product Manager</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <div className="flex text-cyan-500 mb-3 text-xl">
-              ⭐⭐⭐⭐⭐
-            </div>
-            <p className=" mb-6">
-              Flexible learning that fits my schedule. I could learn
-              while working full-time and switch careers successfully.
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="bg-cyan-500 text-white h-12 w-12 flex items-center justify-center rounded-full font-bold">
-                ER
-              </div>
-              <div>
-                <h4 className="font-semibold">Emily Rodriguez</h4>
-                <p className="text-sm text-gray-500">UX Designer</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

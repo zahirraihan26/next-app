@@ -1,32 +1,33 @@
 "use client";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
     {
-        question: "How do I enroll in a course?",
+        question: "How do I enroll in an driven course?",
         answer:
-            "To enroll in a course, simply sign up for an account, browse our course catalog, select the course you're interested in, and click the 'Enroll Now' button. Follow the payment instructions to get instant access.",
+            "To enroll, create your pioneer account, browse our advanced AI catalog, select your desired curriculum, and click 'Enroll Now'. Our system instantly provisions your personalized learning environment.",
     },
     {
-        question: "Do I get a certificate after completion?",
+        question: "Are the certifications industry-recognized?",
         answer:
-            "Yes! Upon successfully completing a course and passing any required assessments, you will receive a verified certificate that you can share on your resume or LinkedIn profile.",
+            "Yes! Upon successfully completing a course and passing the automated assessments, you receive a blockchain-verified certificate recognized by leading tech companies globally.",
     },
     {
-        question: "Can I access the courses on mobile?",
+        question: "Is the  learning platform mobile-friendly?",
         answer:
-            "Absolutely. Our platform is fully responsive, allowing you to learn on the go from your smartphone, tablet, or desktop computer anytime, anywhere.",
+            "Absolutely. Our platform utilizes responsive design natively, meaning you can access your AI-tutored sessions on any smartphone, tablet, or desktop seamlessly.",
     },
     {
-        question: "What payment methods do you accept?",
+        question: "What payment methods are supported for pro tiers?",
         answer:
-            "We accept major credit cards (Visa, MasterCard, American Express), PayPal, and other secure payment methods depending on your region.",
+            "We accept major credit cards, modern crypto payments (BTC, ETH, USDC), and region-specific secure payment gateways for maximum flexibility.",
     },
     {
-        question: "Is there a refund policy?",
+        question: "How does the  personalized learning path work?",
         answer:
-            "Yes, we offer a 30-day money-back guarantee. If you are not satisfied with a course, you can request a full refund within 30 days of purchase.",
+            "Our proprietary neural engine analyzes your learning speed, quiz results, and interaction patterns to dynamically adjust the curriculum, ensuring optimal retention and mastery.",
     },
 ];
 
@@ -38,36 +39,62 @@ export default function FAQ() {
     };
 
     return (
-        <section className="py-16 bg-white dark:bg-zinc-900">
-            <div className="max-w-4xl mx-auto px-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-zinc-900 dark:text-white">
-                    Frequently Asked Questions
-                </h2>
+        <section className="relative py-24 bg-[#030014] overflow-hidden">
+            <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div className="relative max-w-4xl mx-auto px-4 z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                        Frequently Asked <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400">Questions</span>
+                    </h2>
+                    <p className="text-gray-400 text-lg">
+                        Everything you need to know about navigating the future of education.
+                    </p>
+                </motion.div>
+
                 <div className="space-y-4">
                     {faqs.map((faq, index) => (
-                        <div
+                        <motion.div
                             key={index}
-                            className="border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="border border-white/10 bg-[#0a0a0a]/60 backdrop-blur-md rounded-xl overflow-hidden hover:border-violet-500/40 transition-colors duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
                         >
                             <button
                                 onClick={() => toggleFAQ(index)}
-                                className="w-full flex justify-between items-center p-4 text-left bg-zinc-50 dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition"
+                                className="w-full flex justify-between items-center p-5 text-left bg-transparent transition group"
                             >
-                                <span className="text-lg font-medium text-zinc-900 dark:text-white">
+                                <span className={`text-lg font-medium transition-colors duration-300 ${openIndex === index ? "text-cyan-400" : "text-gray-300 group-hover:text-white"}`}>
                                     {faq.question}
                                 </span>
-                                {openIndex === index ? (
-                                    <FaChevronUp className="text-blue-600" />
-                                ) : (
-                                    <FaChevronDown className="text-zinc-500" />
-                                )}
-                            </button>
-                            {openIndex === index && (
-                                <div className="p-4 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300">
-                                    {faq.answer}
+                                <div className={`flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-300 ${openIndex === index ? "bg-cyan-500/20 text-cyan-400" : "bg-white/5 text-gray-400 group-hover:bg-white/10"}`}>
+                                    {openIndex === index ? <FaChevronUp className="w-3 h-3" /> : <FaChevronDown className="w-3 h-3" />}
                                 </div>
-                            )}
-                        </div>
+                            </button>
+
+                            <AnimatePresence>
+                                {openIndex === index && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    >
+                                        <div className="p-5 pt-0 text-gray-400 border-t border-white/5 mt-2 bg-[#050505]/40 text-base leading-relaxed">
+                                            <p className="pt-3">{faq.answer}</p>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
                     ))}
                 </div>
             </div>
